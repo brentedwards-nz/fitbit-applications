@@ -1,7 +1,15 @@
 <svg>
-  <rect id="background" />
+  <gradientRect width="100%" height="100%"
+    gradient-type="linear"
+    gradient-x1="0" gradient-y1="50"
+    gradient-x2="0" gradient-y2="100%-50"
+    gradient-color1="magenta" gradient-color2="red" 
+  />
+
+  <!-- <rect id="background" /> -->
   <text id="clock" class="clockLabelStyle clockLabelPosition"/>
 
   <text id="hr" class="hrLabelStyle hrLabelPosition"/>
   <text id="steps" class="stepsLabelStyle stepsLabelPosition"/>
+  <gradientRect id="stepsProgress" class="stepsProgressStyle stepsProgressPosition"/>
 </svg>
