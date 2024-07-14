@@ -1,4 +1,7 @@
 <svg>
   <rect id="background" />
-  <text id="clock" class="mainLabel"/>
+  <text id="clock" class="clockLabelStyle clockLabelPosition"/>
+
+  <text id="hr" class="hrLabelStyle hrLabelPosition"/>
+  <text id="steps" class="stepsLabelStyle stepsLabelPosition"/>
 </svg>

@@ -2,6 +2,13 @@ import clock from "clock";
 import * as document from "document";
 import { preferences } from "user-settings";
 
+import { HeartRateSensor } from "heart-rate";
+
+import { me as appbit } from "appbit";
+import { today } from "user-activity";
+
+// ===================================================================
+// Global Utils
 function zeroPad(i) {
   if (i < 10) {
     i = "0" + i;
@@ -9,17 +16,15 @@ function zeroPad(i) {
   return i;
 }
 
-// Update the clock every second
-clock.granularity = "seconds";
+// ===================================================================
+// Clock
 
-// Get a handle on the <text> element
 const clockControl = document.getElementById("clock");
-
-let today = undefined;
+clock.granularity = "seconds";
 
 // Update the <text> element every tick with the current time
 clock.ontick = (evt) => {
-  today = evt.date;
+  const today = evt.date;
   let hours = today.getHours();
   let meridiem = " AM";
   if (preferences.clockDisplay === "12h") {
@@ -36,4 +41,28 @@ clock.ontick = (evt) => {
   }
   let mins = zeroPad(today.getMinutes());
   clockControl.text = `${hours}:${mins}${meridiem}`;
+}
+
+// ===================================================================
+// Heart Rate
+const hrControl = document.getElementById("hr");
+if (HeartRateSensor) {
+  console.log("This device has a HeartRateSensor!");
+  const hrm = new HeartRateSensor();
+  hrm.addEventListener("reading", () => {
+    hrControl.text = `HR: ${hrm.heartRate}`;
+  });
+  hrm.start();
+} else {
+  hrControl.text = "HR: N/A";
+}
+
+// ===================================================================
+// Steps
+const stepsControl = document.getElementById("steps");
+if (appbit.permissions.granted("access_activity")) {
+  stepsControl.text = `STEPS: ${today.adjusted.steps}`;
+}
+else {
+  stepsControl.text = "STEPS: N/A";
 }
