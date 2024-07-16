@@ -7,6 +7,28 @@ import { HeartRateSensor } from "heart-rate";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 
+import * as messaging from "messaging";
+
+// ===================================================================
+// Module
+import defaultExport, {localExport, globalExport} from "./settings_utils"
+defaultExport();
+localExport();
+globalExport();
+
+// ===================================================================
+// Settings
+messaging.peerSocket.addEventListener("message", (evt) => {
+  if (evt && evt.data && evt.data.key === "myColor") {
+    //myElement.style.fill = evt.data.value;
+    console.log("  evt.data.key:", evt.data.key)
+    console.log("evt.data.value:", evt.data.value)
+
+    const p = document.getElementById("stepsProgress");
+    p.style.fill = evt.data.value;
+  }
+});
+
 // ===================================================================
 // Global Utils
 function zeroPad(i) {
