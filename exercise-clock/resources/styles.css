@@ -76,3 +76,31 @@
   x: 10%;
   y: 55%;
 }
+
+.application-fill           { fill: #27e864; }
+.application-fill           { fill: #27e864; }
+.foreground-fill            { fill: fb-white; }
+.background-fill            { fill: fb-black; }
+
+.bike-button #image {
+  href: "images/bike.png";
+}
+
+.walk-button #image {
+  href: "images/walk.png";
+}
+
+/* Extra Large: 132x132 */
+/* Large: 96x96         */
+/* Medium: 72x72        */
+/* Small: 32x32         */
+
+#button-1 {
+  x: 0%+50;
+  y: 100%-96-20;
+}
+
+#button-2 {
+  x: 100%-125;
+  y: 100%-96-20;
+}

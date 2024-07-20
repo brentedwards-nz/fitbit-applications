@@ -31,3 +31,14 @@ function sendSettingData(data) {
     console.log("No peerSocket connection");
   }
 }
+
+messaging.peerSocket.addEventListener("open", (evt) => {
+  console.log("Ready to send or receive messages");
+});
+
+const textLabel = document.getElementById("some_text");
+messaging.peerSocket.addEventListener("message", (evt) => {
+  console.error(JSON.stringify(evt.data));
+
+  settingsStorage.setItem('message', evt.data.message)
+});

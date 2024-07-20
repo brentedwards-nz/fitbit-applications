@@ -83,8 +83,40 @@ if (HeartRateSensor) {
 // Steps
 const stepsControl = document.getElementById("steps");
 if (appbit.permissions.granted("access_activity")) {
-  stepsControl.text = `STEPS: ${today.adjusted.steps}`;
+  stepsControl.text = `STEPS: ${today.local.steps}`;
 }
 else {
   stepsControl.text = "STEPS: N/A";
+}
+
+// ===================================================================
+// button-1
+const btn1 = document.getElementById("button-1");
+btn1.onclick = () => {
+  console.log("btn1.onclick...")
+  sendMessage("btn1.onclick...")
+}
+
+// ===================================================================
+// button-2
+const btn2 = document.getElementById("button-2");
+btn2.onclick = () => {
+  console.log("btn2.onclick...")
+  sendMessage("btn2.onclick...")
+}
+
+messaging.peerSocket.addEventListener("error", (err) => {
+  console.error(`Connection error: ${err.code} - ${err.message}`);
+});
+
+function sendMessage(msg) {
+  // Sample data
+  const data = {
+    message: msg
+  }
+
+  if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+    // Send the data to peer as a message
+    messaging.peerSocket.send(data);
+  }
 }

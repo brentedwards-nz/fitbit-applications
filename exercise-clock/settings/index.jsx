@@ -15,6 +15,13 @@ function Colors(props) {
           ]}
         />
       </Section>
+      <Section
+        title={<Text bold align="center">Settings 2</Text>}>
+      </Section>
+      <Section
+        title={<Text bold align="center">Settings 3</Text>}>
+        <Text bold align="center">Message: {props.settingsStorage.message}</Text>
+      </Section>
     </Page>
   );
 }

@@ -11,5 +11,9 @@
 
   <text id="hr" class="hrLabelStyle hrLabelPosition"/>
   <text id="steps" class="stepsLabelStyle stepsLabelPosition"/>
+
+  <use id="button-1" href="#icon-button" class="medium-button application-fill bike-button" />
+  <use id="button-2" href="#icon-button" class="medium-button application-fill walk-button" />
+  
   <gradientRect id="stepsProgress" class="stepsProgressStyle stepsProgressPosition"/>
 </svg>
