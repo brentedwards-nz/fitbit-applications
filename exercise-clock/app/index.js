@@ -11,7 +11,7 @@ import * as messaging from "messaging";
 
 // ===================================================================
 // Module
-import defaultExport, {localExport, globalExport} from "./settings_utils"
+import defaultExport, { localExport, globalExport } from "./settings_utils"
 defaultExport();
 localExport();
 globalExport();
@@ -92,17 +92,27 @@ else {
 // ===================================================================
 // button-1
 const btn1 = document.getElementById("button-1");
+var btn1_click_count = 0
 btn1.onclick = () => {
+  btn1_click_count++;
   console.log("btn1.onclick...")
-  sendMessage("btn1.onclick...")
+  const data = {
+    message1: "btn1 was clicked: " + btn1_click_count
+  }
+  sendMessage(data)
 }
 
 // ===================================================================
 // button-2
 const btn2 = document.getElementById("button-2");
+var btn2_click_count = 0
 btn2.onclick = () => {
+  btn2_click_count++;
   console.log("btn2.onclick...")
-  sendMessage("btn2.onclick...")
+  const data = {
+    message2: "btn2 was clicked: " + btn2_click_count
+  }
+  sendMessage(data)
 }
 
 messaging.peerSocket.addEventListener("error", (err) => {
@@ -111,12 +121,10 @@ messaging.peerSocket.addEventListener("error", (err) => {
 
 function sendMessage(msg) {
   // Sample data
-  const data = {
-    message: msg
-  }
+
 
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     // Send the data to peer as a message
-    messaging.peerSocket.send(data);
+    messaging.peerSocket.send(msg);
   }
 }

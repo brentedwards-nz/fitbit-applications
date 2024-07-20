@@ -1,4 +1,7 @@
 function Colors(props) {
+  console.log("Settings:")
+  console.log("Props:", JSON.stringify(props))
+  console.log("Message:", props.settings.message)
   return (
     <Page>
       <Section
@@ -17,10 +20,11 @@ function Colors(props) {
       </Section>
       <Section
         title={<Text bold align="center">Settings 2</Text>}>
+        <Text bold align="center">Message 1: {props.settings.message1}</Text>
       </Section>
       <Section
         title={<Text bold align="center">Settings 3</Text>}>
-        <Text bold align="center">Message: {props.settingsStorage.message}</Text>
+        <Text bold align="center">Message 2: {props.settings.message2}</Text>
       </Section>
     </Page>
   );

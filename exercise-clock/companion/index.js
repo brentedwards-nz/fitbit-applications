@@ -36,9 +36,15 @@ messaging.peerSocket.addEventListener("open", (evt) => {
   console.log("Ready to send or receive messages");
 });
 
-const textLabel = document.getElementById("some_text");
-messaging.peerSocket.addEventListener("message", (evt) => {
-  console.error(JSON.stringify(evt.data));
+var message1;
+var message2;
 
-  settingsStorage.setItem('message', evt.data.message)
+messaging.peerSocket.addEventListener("message", (evt) => {
+  console.log("Received message:", JSON.stringify(evt.data));
+  if (evt.data.message1) {
+    settingsStorage.setItem('message1', evt.data.message1)
+  }
+  if (evt.data.message2) {
+    settingsStorage.setItem('message2', evt.data.message2)
+  }
 });
